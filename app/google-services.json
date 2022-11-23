@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "618080662791",
+    "firebase_url": "https://android-cesde-social-network-default-rtdb.firebaseio.com",
+    "project_id": "android-cesde-social-network",
+    "storage_bucket": "android-cesde-social-network.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618080662791:android:208622d42d0596cb6941a2",
+        "android_client_info": {
+          "package_name": "com.pruebasan.android_cesde_social_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618080662791-23h7ib2kqa71fb3dscuir3rkklsul4ug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw98ArUemxpjwO0Yh1JnLefeLBgByAyF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618080662791-23h7ib2kqa71fb3dscuir3rkklsul4ug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
