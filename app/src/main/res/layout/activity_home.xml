@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activities.HomeActivity">
 
+    <ListView
+        android:id="@+id/postsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item_post">
+
+    </ListView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
