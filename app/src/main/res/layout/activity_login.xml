@@ -7,6 +7,16 @@
     android:padding="25dp"
     tools:context=".activities.LoginActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btnLogin"
+        android:visibility="gone"/>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"

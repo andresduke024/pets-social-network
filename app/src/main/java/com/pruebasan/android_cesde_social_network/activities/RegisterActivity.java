@@ -1,23 +1,25 @@
 package com.pruebasan.android_cesde_social_network.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.User;
 import com.pruebasan.android_cesde_social_network.models.enums.AvatarType;
-import com.pruebasan.android_cesde_social_network.repository.UserRepository;
+import com.pruebasan.android_cesde_social_network.repository.RegisterRepository;
+import com.pruebasan.android_cesde_social_network.repository.response.RegisterResponseHandler;
 import com.pruebasan.android_cesde_social_network.utils.Utils;
 import com.pruebasan.android_cesde_social_network.utils.ValidationException;
 
-public class RegisterActivity extends NavigationActivity {
+public class RegisterActivity extends NavigationActivity implements RegisterResponseHandler {
 
     Button btnRegister;
     EditText txtUsername, txtEmail, txtPassword, txtPhone, txtPetName, txtPetAge;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class RegisterActivity extends NavigationActivity {
         txtPhone = findViewById(R.id.txtPhone);
         txtPetName = findViewById(R.id.txtPetName);
         txtPetAge = findViewById(R.id.txtPetAge);
+        progressBar = findViewById(R.id.progressBar);
 
         setListeners();
     }
@@ -75,10 +78,9 @@ public class RegisterActivity extends NavigationActivity {
             throw new ValidationException("La edad de la mascota no puede estar vacía");
 
         try {
-            Integer.parseInt(txtPhone.getText().toString());
             Integer.parseInt(txtPetAge.getText().toString());
         } catch (Exception e) {
-            throw new ValidationException("Asegúrate de ingresar solo números en los campos de número de teléfono y edad de la mascota");
+            throw new ValidationException("Asegúrate de ingresar solo números para la edad de la mascota");
         }
     }
 
@@ -100,6 +102,22 @@ public class RegisterActivity extends NavigationActivity {
         String date = Utils.getDate();
         user.setCreatedAt(date);
 
+        progressBar.setVisibility(View.VISIBLE);
+        RegisterRepository repository = new RegisterRepository(this);
+        repository.performRegister(user);
+    }
+
+    /// Response Handler implementation
+
+    @Override
+    public void userRegistered(User user) {
+        progressBar.setVisibility(View.GONE);
         navigate(HomeActivity.class);
+    }
+
+    @Override
+    public void registerFailed(String errorMessage) {
+        progressBar.setVisibility(View.GONE);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 }

@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.User;
+import com.pruebasan.android_cesde_social_network.repository.LoginRepository;
+import com.pruebasan.android_cesde_social_network.repository.response.LoginResponseHandler;
 import com.pruebasan.android_cesde_social_network.utils.ValidationException;
 
-public class LoginActivity extends NavigationActivity {
+public class LoginActivity extends NavigationActivity implements LoginResponseHandler {
 
     Button btnRegister;
     EditText txtEmail, txtPassword;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class LoginActivity extends NavigationActivity {
         btnRegister = findViewById(R.id.btnLogin);
         txtEmail = findViewById(R.id.txtEmail);
         txtPassword = findViewById(R.id.txtPassword);
+        progressBar = findViewById(R.id.progressBar);
 
         setListeners();
     }
@@ -65,6 +70,22 @@ public class LoginActivity extends NavigationActivity {
         user.setEmail(txtEmail.getText().toString());
         user.setPassword(txtPassword.getText().toString());
 
+        progressBar.setVisibility(View.VISIBLE);
+        LoginRepository repository = new LoginRepository(this);
+        repository.performLogin(user);
+    }
+
+    /// Response Handler implementation
+
+    @Override
+    public void userAuthenticated(User user) {
+        progressBar.setVisibility(View.GONE);
         navigate(HomeActivity.class);
+    }
+
+    @Override
+    public void userAuthenticationFailed(String errorMessage) {
+        progressBar.setVisibility(View.GONE);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 }
