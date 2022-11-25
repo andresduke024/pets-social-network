@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.User;
 import com.pruebasan.android_cesde_social_network.repository.LoginRepository;
+import com.pruebasan.android_cesde_social_network.repository.local.LocalStorageRepository;
 import com.pruebasan.android_cesde_social_network.repository.response.LoginResponseHandler;
 import com.pruebasan.android_cesde_social_network.utils.ValidationException;
 
@@ -80,6 +81,7 @@ public class LoginActivity extends NavigationActivity implements LoginResponseHa
     @Override
     public void userAuthenticated(User user) {
         progressBar.setVisibility(View.GONE);
+        LocalStorageRepository.saveUser(getBaseContext(), user);
         navigate(HomeActivity.class);
     }
 

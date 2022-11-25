@@ -1,6 +1,9 @@
 package com.pruebasan.android_cesde_social_network.models;
 
-import java.util.List;
+import android.content.Context;
+
+import com.pruebasan.android_cesde_social_network.repository.local.ConstantsPreferences;
+import com.pruebasan.android_cesde_social_network.repository.local.PreferencesHelper;
 
 public class User {
     String id;
@@ -12,6 +15,8 @@ public class User {
     int petAge;
     String createdAt;
     String avatarType;
+
+
 
     public String getId() {
         return id;

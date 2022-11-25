@@ -11,6 +11,7 @@ import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.User;
 import com.pruebasan.android_cesde_social_network.models.enums.AvatarType;
 import com.pruebasan.android_cesde_social_network.repository.RegisterRepository;
+import com.pruebasan.android_cesde_social_network.repository.local.LocalStorageRepository;
 import com.pruebasan.android_cesde_social_network.repository.response.RegisterResponseHandler;
 import com.pruebasan.android_cesde_social_network.utils.Utils;
 import com.pruebasan.android_cesde_social_network.utils.ValidationException;
@@ -112,6 +113,7 @@ public class RegisterActivity extends NavigationActivity implements RegisterResp
     @Override
     public void userRegistered(User user) {
         progressBar.setVisibility(View.GONE);
+        LocalStorageRepository.saveUser(getBaseContext(), user);
         navigate(HomeActivity.class);
     }
 
