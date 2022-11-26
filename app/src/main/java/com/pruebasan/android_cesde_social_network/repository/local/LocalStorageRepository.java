@@ -2,6 +2,7 @@ package com.pruebasan.android_cesde_social_network.repository.local;
 
 import android.content.Context;
 
+import com.pruebasan.android_cesde_social_network.models.Post;
 import com.pruebasan.android_cesde_social_network.models.User;
 
 public class LocalStorageRepository {
@@ -42,4 +43,27 @@ public class LocalStorageRepository {
     public static void deleteUser(Context context) {
         PreferencesHelper.deletePreferences(context);
     }
+
+    public static Post getSavedPost(Context context) {
+        String id = (String) PreferencesHelper.getPreferences(context, ConstantsPreferences.keyPostId);
+        String title = (String) PreferencesHelper.getPreferences(context, ConstantsPreferences.keyPostTitle);
+        String description = (String) PreferencesHelper.getPreferences(context, ConstantsPreferences.keyPostDescription);
+
+        if(id == null || title == null || title == null)
+            return null;
+
+        Post post = new Post();
+        post.setId(id);
+        post.setTitle(title);
+        post.setMessage(description);
+
+        return post;
+    }
+
+    public static void savePost(Context context, Post post) {
+        PreferencesHelper.setPreferences(context, ConstantsPreferences.keyPostId, post.getId());
+        PreferencesHelper.setPreferences(context, ConstantsPreferences.keyPostTitle, post.getTitle());
+        PreferencesHelper.setPreferences(context, ConstantsPreferences.keyPostDescription, post.getMessage());
+    }
+
 }

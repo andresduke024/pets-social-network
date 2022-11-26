@@ -1,5 +1,7 @@
 package com.pruebasan.android_cesde_social_network.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,24 +13,27 @@ import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.Post;
 import com.pruebasan.android_cesde_social_network.models.User;
 import com.pruebasan.android_cesde_social_network.repository.CreatePostRepository;
+import com.pruebasan.android_cesde_social_network.repository.EditPostRepository;
 import com.pruebasan.android_cesde_social_network.repository.local.LocalStorageRepository;
-import com.pruebasan.android_cesde_social_network.repository.response.CreatePostResponseHandler;
+import com.pruebasan.android_cesde_social_network.repository.response.EditPostResponseHandler;
 import com.pruebasan.android_cesde_social_network.utils.Utils;
 import com.pruebasan.android_cesde_social_network.utils.ValidationException;
 
-public class AddPostActivity extends NavigationActivity implements CreatePostResponseHandler {
-
+public class EditPostActivity extends NavigationActivity implements EditPostResponseHandler {
     ProgressBar progressBar;
     EditText txtTitle, txtDescription;
     Button btnSend;
 
+    Post post;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post);
+        setContentView(R.layout.activity_edit_post);
 
-        createNavigationBar(R.string.new_post_title);
+        createNavigationBar(R.string.edit_post_title);
         setViewComponents();
+        getSavedPost();
     }
 
     private void setViewComponents() {
@@ -43,13 +48,28 @@ public class AddPostActivity extends NavigationActivity implements CreatePostRes
     private void setListeners() {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                trySendPost();
-            }
+            public void onClick(View view) { tryEditPost(); }
         });
     }
 
-    private void trySendPost() {
+    public void getSavedPost() {
+        post = LocalStorageRepository.getSavedPost(this);
+        
+        if(post == null) {
+            closeScreen(R.string.error);
+            return;
+        }
+
+        txtTitle.setText(post.getTitle());
+        txtDescription.setText(post.getMessage());
+    }
+
+    private void closeScreen(int messageId) {
+        finish();
+        Toast.makeText(getApplicationContext(), messageId, Toast.LENGTH_SHORT).show();
+    }
+
+    private void tryEditPost() {
         try {
             validateFields();
             sendPost();
@@ -68,33 +88,19 @@ public class AddPostActivity extends NavigationActivity implements CreatePostRes
     }
 
     private void sendPost() {
-        Post post = new Post();
-
-        User currentLoggedUser = LocalStorageRepository.getSavedUser(getApplicationContext());
-        post.setUser(currentLoggedUser);
-
         post.setTitle(txtTitle.getText().toString());
         post.setMessage(txtDescription.getText().toString());
 
-        post.setCreatedAt(Utils.getDate());
-
         progressBar.setVisibility(View.VISIBLE);
-        CreatePostRepository repository = new CreatePostRepository(this);
-        repository.add(post);
+        EditPostRepository repository = new EditPostRepository(this);
+        repository.edit(post);
     }
 
     /// Response Handler implementation
 
     @Override
-    public void postCreated() {
+    public void postEdited() {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, "Publicación creada con exito", Toast.LENGTH_LONG).show();
-        finish();
-    }
-
-    @Override
-    public void postCreationFailed(String errorMessage) {
-        progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        closeScreen(R.string.post_edited);
     }
 }

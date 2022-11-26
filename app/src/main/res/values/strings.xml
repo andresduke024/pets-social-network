@@ -5,9 +5,11 @@
     <string name="register_title">Registro</string>
     <string name="login_title">Iniciar Sesión</string>
     <string name="new_post_title">Crear Publicación</string>
+    <string name="edit_post_title">Editar publicación</string>
     <string name="profile_title">Perfil</string>
 
     <string name="create_post_description">Comparte con el mundo las mejores historias y momentos con tu mascota</string>
+    <string name="edit_post_description">Aquí podrás editar tus publicaciones cuantas veces quieras y los cambios se verán reflejados inmediatamente</string>
     <string name="post_options_description">Selecciona la acción que deseas realizar con esta publicación</string>
 
     <string name="post_options_title">"Opciones de publicación"</string>
@@ -15,8 +17,13 @@
     <string name="post_deleted">"Publicación eliminada"</string>
     <string name="post_delete_fail">"Ocurrió un error, no se pudo eliminar la publicación"</string>
 
+    <string name="post_edited">"Publicación editada exitosamente"</string>
+    <string name="post_edit_fail">"Ocurrió un error, no se pudo editar la publicación"</string>
+
     <string name="edit_button">Editar</string>
     <string name="delete_button">Eliminar</string>
     <string name="logout_button">Cerrar sesión</string>
 
+
+    <string name="error">"Ocurrió un error, por favor inténtalo de nuevo</string>
 </resources>

@@ -15,6 +15,7 @@ import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.activities.components.PostsListAdapter;
 import com.pruebasan.android_cesde_social_network.models.Post;
 import com.pruebasan.android_cesde_social_network.repository.PostsRepository;
+import com.pruebasan.android_cesde_social_network.repository.local.LocalStorageRepository;
 import com.pruebasan.android_cesde_social_network.repository.response.PostsResponseHandler;
 
 import java.util.ArrayList;
@@ -132,7 +133,9 @@ public class HomeActivity extends AppActivity implements PostsResponseHandler {
     }
 
     private void editPost() {
-
+        LocalStorageRepository.savePost(this, selectedPost);
+        selectedPost = null;
+        navigate(EditPostActivity.class);
     }
 
     /// Response Handler implementation
