@@ -2,7 +2,7 @@ package com.pruebasan.android_cesde_social_network.models;
 
 public class Post {
     String id;
-    LoggedUser user;
+    User user;
     String title;
     String message;
     String createdAt;
@@ -15,11 +15,11 @@ public class Post {
         this.id = id;
     }
 
-    public LoggedUser getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(LoggedUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
