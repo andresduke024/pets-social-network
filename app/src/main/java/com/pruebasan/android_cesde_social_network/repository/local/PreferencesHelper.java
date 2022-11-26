@@ -41,15 +41,6 @@ public class PreferencesHelper {
         }
     }
 
-    public static Boolean deletePreference(Context context, String key) {
-        try {
-            SharedPreferences preferences = context.getSharedPreferences(ConstantsPreferences.namePreferences, Context.MODE_PRIVATE);
-            return preferences.edit().remove(key).commit();
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public static Boolean deletePreferences(Context context) {
         try {
             SharedPreferences preferences = context.getSharedPreferences(ConstantsPreferences.namePreferences, Context.MODE_PRIVATE);

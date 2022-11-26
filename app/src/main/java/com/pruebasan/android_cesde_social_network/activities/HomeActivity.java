@@ -22,7 +22,7 @@ import java.util.Collections;
 
 public class HomeActivity extends AppActivity implements PostsResponseHandler {
 
-    FloatingActionButton btnAddPost;
+    FloatingActionButton btnAddPost, btnProfile;
     ListView listView;
     ProgressBar progressBar;
 
@@ -49,6 +49,7 @@ public class HomeActivity extends AppActivity implements PostsResponseHandler {
     private void setViewComponents() {
         listView = findViewById(R.id.postsListView);
         btnAddPost = findViewById(R.id.btnAddPost);
+        btnProfile = findViewById(R.id.btnProfile);
         progressBar = findViewById(R.id.progressBar);
 
         setOnClickListeners();
@@ -60,6 +61,13 @@ public class HomeActivity extends AppActivity implements PostsResponseHandler {
             @Override
             public void onClick(View view) {
                 navigate(AddPostActivity.class);
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigate(ProfileActivity.class);
             }
         });
 

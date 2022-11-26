@@ -38,4 +38,8 @@ public class LocalStorageRepository {
         PreferencesHelper.setPreferences(context, ConstantsPreferences.keyPetAge, user.getPetAge());
         PreferencesHelper.setPreferences(context, ConstantsPreferences.keyAvatarType, user.getAvatarType());
     }
+
+    public static void deleteUser(Context context) {
+        PreferencesHelper.deletePreferences(context);
+    }
 }

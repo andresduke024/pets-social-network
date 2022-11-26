@@ -5,6 +5,7 @@
     <string name="register_title">Registro</string>
     <string name="login_title">Iniciar Sesión</string>
     <string name="new_post_title">Crear Publicación</string>
+    <string name="profile_title">Perfil</string>
 
     <string name="create_post_description">Comparte con el mundo las mejores historias y momentos con tu mascota</string>
     <string name="post_options_description">Selecciona la acción que deseas realizar con esta publicación</string>
@@ -16,4 +17,6 @@
 
     <string name="edit_button">Editar</string>
     <string name="delete_button">Eliminar</string>
+    <string name="logout_button">Cerrar sesión</string>
+
 </resources>
