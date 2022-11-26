@@ -6,4 +6,6 @@ import java.util.ArrayList;
 
 public interface PostsResponseHandler {
     void updatePosts(Post post);
+    void postRemoved(Post post);
+    void postRemoveFailed();
 }

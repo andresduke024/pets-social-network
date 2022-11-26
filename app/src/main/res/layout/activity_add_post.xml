@@ -69,7 +69,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="¿Qué hay de nuevo con tu amiguito peludo? \n\n\n\n"
+        android:hint="¿Qué hay de nuevo con tu amiguito peludo?"
         android:inputType="textMultiLine" />
 
 </RelativeLayout>

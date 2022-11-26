@@ -7,4 +7,13 @@
     <string name="new_post_title">Crear Publicación</string>
 
     <string name="create_post_description">Comparte con el mundo las mejores historias y momentos con tu mascota</string>
+    <string name="post_options_description">Selecciona la acción que deseas realizar con esta publicación</string>
+
+    <string name="post_options_title">"Opciones de publicación"</string>
+
+    <string name="post_deleted">"Publicación eliminada"</string>
+    <string name="post_delete_fail">"Ocurrió un error, no se pudo eliminar la publicación"</string>
+
+    <string name="edit_button">Editar</string>
+    <string name="delete_button">Eliminar</string>
 </resources>

@@ -56,6 +56,8 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
 
         if(!post.isEditable(convertView.getContext()))
             editImage.setVisibility(View.GONE);
+        else
+            editImage.setVisibility(View.VISIBLE);
 
         return super.getView(position, convertView, parent);
     }
