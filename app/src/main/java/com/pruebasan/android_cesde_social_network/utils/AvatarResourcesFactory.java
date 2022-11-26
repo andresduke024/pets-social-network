@@ -4,7 +4,7 @@ import com.pruebasan.android_cesde_social_network.R;
 import com.pruebasan.android_cesde_social_network.models.enums.AvatarType;
 
 public class AvatarResourcesFactory {
-    public static int getResourceName(AvatarType type) {
+    public static int getResourceId(AvatarType type) {
         switch (type) {
             case BEAR: return R.drawable.bear;
             case CAT: return R.drawable.cat;

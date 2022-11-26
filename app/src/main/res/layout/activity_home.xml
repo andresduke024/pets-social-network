@@ -7,6 +7,16 @@
     android:padding="10dp"
     tools:context=".activities.HomeActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/postsListView"
         android:layout_width="match_parent"
