@@ -13,7 +13,7 @@ public class AppActivity extends AppCompatActivity {
             Intent intent = new Intent(this, destination);
             startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(this, "Ocurrió un error, por favor inténtalo de nuevo", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ocurrió un error, por favor inténtalo de nuevo", Toast.LENGTH_SHORT).show();
         }
     }
 

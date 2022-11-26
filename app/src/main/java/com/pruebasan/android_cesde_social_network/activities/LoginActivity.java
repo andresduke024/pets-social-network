@@ -52,9 +52,9 @@ public class LoginActivity extends NavigationActivity implements LoginResponseHa
             validateFields();
             login();
         } catch (ValidationException exception) {
-            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
-            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -88,6 +88,6 @@ public class LoginActivity extends NavigationActivity implements LoginResponseHa
     @Override
     public void userAuthenticationFailed(String errorMessage) {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 }

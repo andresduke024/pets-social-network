@@ -74,9 +74,9 @@ public class EditPostActivity extends NavigationActivity implements EditPostResp
             validateFields();
             sendPost();
         } catch (ValidationException exception) {
-            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
-            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_SHORT).show();
         }
     }
 

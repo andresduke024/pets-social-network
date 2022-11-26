@@ -162,7 +162,7 @@ public class HomeActivity extends AppActivity implements PostsResponseHandler {
 
     private void finishPostRemove(int messageId) {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, messageId, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, messageId, Toast.LENGTH_SHORT).show();
     }
 
     private void removePostFromList(Post post) {

@@ -54,9 +54,9 @@ public class AddPostActivity extends NavigationActivity implements CreatePostRes
             validateFields();
             sendPost();
         } catch (ValidationException exception) {
-            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (Exception exception) {
-            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ocurrió un error inesperado, asegurese de ingresar todos los campos correctamente", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -88,13 +88,13 @@ public class AddPostActivity extends NavigationActivity implements CreatePostRes
     @Override
     public void postCreated() {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, "Publicación creada con exito", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Publicación creada con exito", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void postCreationFailed(String errorMessage) {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 }
